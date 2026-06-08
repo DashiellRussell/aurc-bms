@@ -8,6 +8,15 @@ engineering, not the drawing. Authority order: `interconnect.md` (board edges) �
 separate fuel gauge) · ESP32-S3-WROOM-1 · TCA9548A I²C mux · 4 independent 1S channels (FC1, FC2,
 Pyro1, Pyro2) · single star ground on Board 1.
 
+> **Build status (2026-06-08):** the drawn capture was **migrated** from the archived single-board
+> design into `board1_power/` — `USB_IN.kicad_sch` and the 4× `charge_chanel.kicad_sch` instances
+> are live (lib refs fixed to `BMS:`), validated by `kicad-cli sch erc` (loads clean, 169 WIP
+> violations — unconnected pins, no PWR_FLAGs, "Unspecified" pin-type warnings from the imported
+> symbols). **Remaining build (do in KiCad GUI, in order):** ① swap ESP32-C3 → ESP32-S3-WROOM-1 ·
+> ② add TCA9548A mux + wire each channel's I²C to its mux port (§5 table) · ③ add the 4× RGB chain +
+> TPS22917 load switch (§5, §9b) · ④ add J1 / J1s connectors (§6, `interconnect.md`) · ⑤ star
+> ground (§7) · ⑥ finish root wiring, add PWR_FLAGs, place the 2nd unit of the dual FET, clear ERC.
+
 > **Pin numbers:** connections below are given **by pin function/name**, because the safe move is
 > to confirm physical pin numbers against each part's symbol + datasheet as you place it. For the
 > charge channel and USB input you already have a *drawn reference* in

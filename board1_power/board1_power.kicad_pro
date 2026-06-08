@@ -415,8 +415,28 @@
   },
   "sheets": [
     [
-      "a6d906da-e551-4548-abd6-0f08a398d742",
-      "Root"
+      "0d1390b9-e848-4ad4-8bef-84851d0f73a3",
+      "board1_power"
+    ],
+    [
+      "98574bda-0736-4dde-adc3-a95faa234ebf",
+      "USB_IN"
+    ],
+    [
+      "abedc9f9-68af-49a8-a491-d0e4f556630a",
+      "Charge_Chanel1 (FC1)"
+    ],
+    [
+      "7cc26174-d1c0-44a8-9fa0-4dcf0205b2b2",
+      "Charge_Chanel2 (FC2)"
+    ],
+    [
+      "45f76658-3841-4070-b6f3-8ab2997ddeec",
+      "Charge_Chanel3(PYRO1)"
+    ],
+    [
+      "752790ff-dd95-40f0-bfb8-671dfb87f294",
+      "Charge_Chanel4(PYRO2)"
     ]
   ],
   "text_variables": {},
