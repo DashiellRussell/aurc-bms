@@ -289,7 +289,13 @@
     "netclass_patterns": []
   },
   "pcbnew": {
-    "last_paths": {},
+    "last_paths": {
+      "idf": "",
+      "netlist": "",
+      "plot": "",
+      "specctra_dsn": "",
+      "vrml": ""
+    },
     "page_layout_descr_file": ""
   },
   "schematic": {
@@ -405,12 +411,12 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "AURC_BMS.kicad_sch",
-        "name": "AURC_BMS",
+        "filename": "board1_power.kicad_sch",
+        "name": "board1_power",
         "uuid": "0d1390b9-e848-4ad4-8bef-84851d0f73a3"
       }
     ],
-    "used_designators": "U1-2,U11-12,#PWR1-11,#PWR13,#PWR16-17,#PWR24,#PWR26,#PWR69-77,C1-2,C7-8,C27-28,D6,JP1,R1-5,R7,R10-11,R41-44,J3",
+    "used_designators": "#FLG1-6,L1-4,R1-54,JP1,C1-37,U1-13,TH1-4,F1-4,Q1-8,#PWR1-100,D1-10,J1-3",
     "variants": []
   },
   "sheets": [
