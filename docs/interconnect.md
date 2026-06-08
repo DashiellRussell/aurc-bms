@@ -69,8 +69,9 @@ CH1→CH4 ordering and keeping each channel's V adjacent to its own GND.
 | 5 | CH3_V (Pyro1) | 6 | CH3_GND |
 | 7 | CH4_V (Pyro2) | 8 | CH4_GND |
 
-These rails are the **system/charge-side** (SYS) output of each SY6970 power-path charger, after the
-per-cell protection stack. Live whenever a charged cell is fitted (independent of USB).
+Each rail is the per-channel **`CHn_V`** output: a `0Ω` strap selects its source — **`SYS`** (SY6970
+power-path, **default**) or **`LOAD_P`** (direct protected battery) — and a single PTC fuses it after
+the selector. Live whenever a charged cell is fitted (independent of USB). See architecture §4/§5/§12.
 
 ## J1s — Board 1 ↔ Board 2  (signal, 4-pin)
 

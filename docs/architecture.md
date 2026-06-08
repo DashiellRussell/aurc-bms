@@ -51,18 +51,18 @@
 
 ## 4. Per-cell protection stack
 
-All four channels, in series order from the cell outward:
+In series order from the cell outward:
 
-1. **Reverse-polarity FET** — low-Rds P-FET (DMG2305UX / SI2333-class), not a Schottky.
-2. **Fuse / PTC** — sustained-short backstop. Resettable PTC preferred (passes the brief 2 A firing pulse, trips on a sustained short, self-resets).
-3. **Protection IC** — DW01A-class + dual N-FET (FS8205-class): over-charge, over-discharge (~2.5 V cutoff, matches the P30B), over-current.
-4. **Power-path charger (SY6970)** — switching power-path, serves the system rail before topping the cell — see §5.
+1. **Reverse-polarity P-FET — at the cell terminal, ahead of the charger tap.** Low-Rds P-FET (DMG2305UX / SI2333-class) so a backwards cell can't reach the SY6970 BAT pin. **Always in circuit, independent of the §5 source select.** It carries full charge + firing-pulse current, so compensate its Rds drop by trimming the I²C charge voltage up by `I_CHG·R_DS`. The **keyed holder is the primary defense**; this FET is the electrical backstop that also guards the charger. *(The SY6970 has its own internal input reverse-blocking FET — 25 mΩ — but that protects the USB side, not against a backwards cell.)*
+2. **Protection IC** — DW01A + SI4920DY dual N-FET, in the cell-negative path: over-charge (~4.3 V), over-discharge (~2.4 V), fast electronic over-current/short.
+3. **Power-path charger (SY6970)** — switching power-path; see §5. Brings its own layers: **9 A BATFET discharge OCP, 104 % battery OVP, input/system OVP, 160 °C thermal shutdown** (datasheet-verified).
+4. **Source select + fuse — on the `CHn_V` output.** A `0Ω` strap picks the channel's output source: **`SYS` (charger power-path, default)** or **`LOAD_P` (direct protected battery)** — see §5/§12. A single resettable **PTC sits after the selector**, fusing the output whichever source is chosen: the slow catastrophic-short backstop for the "silicon failed shorted" case, sized to pass the brief 2 A firing pulse and trip on a sustained short.
 
-**Pyro-channel exception:** the protection FET carries the firing pulse, so set its over-current trip **above** worst-case firing inrush by using a lower-Rds dual FET. The fuse/PTC is the catastrophic-short backstop. The pyro cell barely cycles (a few mAh/shot), so over-discharge risk is low.
+**Pyro-channel exception:** the firing-pulse return flows through the DW01A/SI4920DY FETs, so the over-current trip must sit **above** firing inrush. Trip ≈ `V_OV(DW01A ~100–150 mV) ÷ (2·R_DS(SI4920DY))` — verify R_DS keeps this ≳1.5× the 2 A pulse; drop to a lower-Rds FET on the pyro channels if not (§13.4). The pyro cell barely cycles (a few mAh/shot), so over-discharge risk is low.
 
 **Charge temperature cutoff:** NTC on each charger's TS pin to inhibit charging outside ~0–45 °C.
 
-**Over-charge IC stays** even though the charger terminates at 4.2 V — it's the backstop against a charger that fails shorted.
+**Over-charge:** doubly covered — DW01A over-charge **and** the SY6970's 104 % VBATOVP.
 
 ---
 
@@ -75,6 +75,10 @@ All four channels, in series order from the cell outward:
 - **Switching, not linear** — each charger bucks 12 V → 4.2 V efficiently; no front-end converter needed. Each needs its own inductor (SRP5030CA-2R2M) + input/output caps.
 - **Charge current is set over I²C** (CICHG register), not a resistor strap — so it can be tuned in firmware per source. Target ~1.0–1.5 A/cell: 1.0 A fits a 9 V/2 A phone charger (~3 h); 1.5 A (≈0.5 C) wants a 12 V/3 A brick (~2 h). Input-current limit (ILIM pin resistor + I²C DPM) throttles on a weak source.
 - **Monitoring comes free:** the same SY6970 reports VBUS/VBAT/VSYS/ICHG/IBUS/TS over I²C — see §6. This is why no separate fuel gauge is fitted.
+- **Flight rail = SYS by default.** Each channel's J1 output (`CHn_V`) is picked by a `0Ω` strap: **`SYS`** (charger power-path — default; runs the load from USB while charging, spares the cell) or **`LOAD_P`** (direct protected battery). One PTC after the selector fuses either (§4). Free per-channel choice (e.g. SYS on the FCs, LOAD_P on the pyros) just by which 0Ω is stuffed.
+- **Verified SY6970 silicon** (datasheet): VSYSMIN **3.5 V** (3.65 typ), SYS ≈ VBAT+50 mV with a battery present; **BATFET 10 mΩ / 9 A discharge OCP** → a 2 A pyro pulse is trivial; **supplement mode** lets the cell back up the input on load spikes.
+- **Reliability rule — never enter ship mode in flight.** BATFET defaults on and the I²C watchdog resets *to* BATFET-on, so SYS survives a dead ESP; but an I²C BATFET-disable (or a 10 s `/QON`-low hold) drops the rail. Strap `/QON` high (no button) and bar firmware from disabling the BATFET on flight channels.
+- **Cap corrections** (datasheet typical-app): bootstrap **47 nF** (not 47 µF), **PMID 6.8 µF**, BAT ≥10 µF, SYS ≥10 µF, REGN 4.7 µF.
 
 **ESP programming:** D+/D- straight to the ESP32-S3 module (native USB-Serial-JTAG, no UART bridge). USBLC6-class ESD on D+/D-, BOOT/EN pads. The flight computers are **not** programmed here (their own SWD); the USB bypass only *powers* them for bench debug.
 
@@ -181,7 +185,7 @@ Invariants: chargers inherently dead without USB; per-cell protection always liv
 
 ## 12. Configuration straps (0Ω / populate)
 
-ESP source select (charge-rail vs cell-1) + always-on capability strap · PD voltage request (9/12/15 V) · ~~per-cell charge-current set~~ *(now I²C-programmed on the SY6970 — only the ILIM input-current resistor remains)* · D+/D- series 0Ω · PD-sink bypass (force 5 V) · per-channel ground-to-star 0Ω · per-channel enable source (pin vs always-on for bench).
+ESP source select (charge-rail vs cell-1) + always-on capability strap · PD voltage request (9/12/15 V) · ~~per-cell charge-current set~~ *(now I²C-programmed on the SY6970 — only the ILIM input-current resistor remains)* · D+/D- series 0Ω · PD-sink bypass (force 5 V) · per-channel ground-to-star 0Ω · per-channel enable source (pin vs always-on for bench) · **per-channel `CHn_V` source select — `0R_SYS` (default) vs `0R_LOAD`** (SYS power-path vs direct battery, §4/§5).
 
 ---
 
@@ -202,3 +206,4 @@ ESP source select (charge-rail vs cell-1) + always-on capability strap · PD vol
 | 0.1 | Initial architecture: 3-board set, 4 independent 1S channels, RBF pull pins, power-path PD charging, dual-purpose USB-C, per-cell protection, non-flight-critical monitoring layer. |
 | 0.2 | Parts selected (MP2617 charger, MAX17048 + TCA9548A mux, CH224K PD sink, DW01A+FS8205 protection, IS31FL3731 gauge, ESP32-S3-WROOM-1, P30B 18650 cell). Corrected terminology: no on-board arming — pull pins are power-enable/isolation. Added fuel-gauge sensing, hardwired indicator LEDs, mechanical stack note (Boards 1+3 stacked, Board 2 spine), candidate BOM. |
 | 0.3 | **Charger/monitoring topology revised to match existing capture:** SY6970 smart charger (charge + integrated I²C monitoring) replaces MP2617 + MAX17048; separate fuel gauge dropped; TCA9548A mux retained (4× shared 0x6B). ESP confirmed ESP32-S3-WROOM-1. BOM rows mapped to concrete KiCad/`BMS` symbol libraries. Added ESP load-switch (TPS22917) + 3V3 LDO (AP2112K) to BOM. Charge current moved from resistor strap to I²C register. Board 1 capture plan written (`board1_power_capture_plan.md`). Added **per-cell addressable RGB status LEDs** (§9b) on Board 1 — ESP-driven, standalone of Board 2. |
+| 0.4 | **Channel output finalized.** Per-channel `CHn_V` is source-selectable by 0Ω — **SYS (default)** or LOAD_P (direct battery); one PTC relocated *after* the selector to fuse either. **Reverse-polarity P-FET moved to the cell terminal** (always-on, now actually guards the charger; Rds drop compensated via I²C VREG); old Q2/Q3 LOAD-branch FETs dropped, keyed holder = primary reverse defense. SY6970 datasheet-verified (VSYSMIN 3.5 V, BATFET 10 mΩ / 9 A OCP, 104 % OVP, supplement mode). Bootstrap cap corrected 47 µF→47 nF, PMID→6.8 µF. Added "no ship-mode in flight" reliability rule. |
