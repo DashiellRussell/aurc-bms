@@ -279,6 +279,96 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA1",
+        "pcb_color": "rgb(230, 25, 75)",
+        "priority": 0,
+        "schematic_color": "rgb(230, 25, 75)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA2",
+        "pcb_color": "rgb(60, 180, 75)",
+        "priority": 1,
+        "schematic_color": "rgb(60, 180, 75)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA3",
+        "pcb_color": "rgb(0, 130, 200)",
+        "priority": 2,
+        "schematic_color": "rgb(0, 130, 200)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA4",
+        "pcb_color": "rgb(245, 130, 48)",
+        "priority": 3,
+        "schematic_color": "rgb(245, 130, 48)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA5",
+        "pcb_color": "rgb(145, 30, 180)",
+        "priority": 4,
+        "schematic_color": "rgb(145, 30, 180)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA6",
+        "pcb_color": "rgb(0, 128, 128)",
+        "priority": 5,
+        "schematic_color": "rgb(0, 128, 128)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA7",
+        "pcb_color": "rgb(240, 50, 230)",
+        "priority": 6,
+        "schematic_color": "rgb(240, 50, 230)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA8",
+        "pcb_color": "rgb(154, 99, 36)",
+        "priority": 7,
+        "schematic_color": "rgb(154, 99, 36)",
+        "tuning_profile": "",
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "line_style": 0,
+        "name": "CA9",
+        "pcb_color": "rgb(0, 0, 128)",
+        "priority": 8,
+        "schematic_color": "rgb(0, 0, 128)",
+        "tuning_profile": "",
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -286,10 +376,53 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "CA1",
+        "pattern": "*CA1"
+      },
+      {
+        "netclass": "CA2",
+        "pattern": "*CA2"
+      },
+      {
+        "netclass": "CA3",
+        "pattern": "*CA3"
+      },
+      {
+        "netclass": "CA4",
+        "pattern": "*CA4"
+      },
+      {
+        "netclass": "CA5",
+        "pattern": "*CA5"
+      },
+      {
+        "netclass": "CA6",
+        "pattern": "*CA6"
+      },
+      {
+        "netclass": "CA7",
+        "pattern": "*CA7"
+      },
+      {
+        "netclass": "CA8",
+        "pattern": "*CA8"
+      },
+      {
+        "netclass": "CA9",
+        "pattern": "*CA9"
+      }
+    ]
   },
   "pcbnew": {
-    "last_paths": {},
+    "last_paths": {
+      "idf": "",
+      "netlist": "",
+      "plot": "",
+      "specctra_dsn": "",
+      "vrml": ""
+    },
     "page_layout_descr_file": ""
   },
   "schematic": {
@@ -405,18 +538,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "AURC_BMS.kicad_sch",
-        "name": "AURC_BMS",
+        "filename": "board2_monitor.kicad_sch",
+        "name": "board2_monitor",
         "uuid": "0d1390b9-e848-4ad4-8bef-84851d0f73a3"
       }
     ],
-    "used_designators": "U1-2,U11-12,#PWR1-11,#PWR13,#PWR16-17,#PWR24,#PWR26,#PWR69-77,C1-2,C7-8,C27-28,D6,JP1,R1-5,R7,R10-11,R41-44,J3",
+    "used_designators": "#PWR15,C2-3",
     "variants": []
   },
   "sheets": [
     [
-      "0563ab3f-97cb-426a-88d1-264bb4667834",
-      "Root"
+      "0d1390b9-e848-4ad4-8bef-84851d0f73a3",
+      "board2_monitor"
     ]
   ],
   "text_variables": {},
