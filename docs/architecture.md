@@ -103,11 +103,15 @@ In series order from the cell outward:
 - Streams charge + channel-live state over BLE — **read-only, forever**; never accepts a command.
 - Supply regulated to 3.3 V from SYS/charge rail — **never raw VBUS**.
 
-**ESP power gating:**
-- USB present → ESP on (charge rail), gauge shows charging.
-- USB absent + gauge button → momentary soft-latch wake: read, paint gauge N seconds, power down.
-- USB absent + launch-day jumper removed → sustained-on, BLE streaming.
-- A hardware **load switch** is the real gate (firmware can't strand it on); add a watchdog + load-switch timeout.
+**ESP power gating (as built):** the AP2112K `EN` is driven by a **diode-OR** (`MMBD4448HCQW`, quad common-cathode) of four sources, with a 100 k pull-down → **default off**:
+- **USB present** → VBUS 100 k/33 k divider pulls `EN` high (gauge shows charging).
+- **Always-on strap** (`R59`, 100 k from `CH1_V`) → sustained-on for flight BLE.
+- **Gauge button → `WAKE`** (across the J1↔J2 signal connector, §interconnect) → momentary wake; the ESP then drives its **self-hold** GPIO into the diode-OR to latch on, paints the gauge N s, then releases → powers down.
+- **ESP self-hold** GPIO → holds itself on; the **watchdog** drops it on a firmware hang (can't strand it on).
+- **Off header (RBF jumper)** — a `2N7002` **shunt** on `EN` (drain→EN, source→GND), gate fed from `CH1_V` through the launch-day jumper `J4`: **jumper in → `EN`→GND → ESP off** (integration/storage week); **removed on launch day → ESP on**. Overrides all four sources (which are current-limited).
+- Supply: `CH1_V → AP2112K → 3.3 V`; **never raw VBUS** (VBUS only reaches `EN` through the divider).
+
+*(This replaces the earlier "dedicated TPS22917 load switch" plan — the AP2112K `EN` is the gate; a load switch was deemed redundant for gating only the ESP rail.)*
 
 **Gauge:** 64 LEDs via **IS31FL3731 (eTQFP-28)**, per-LED PWM, hardware breathe/animation engine. Per channel: a charge-level bar plus **2 diagnostic LEDs** (over-temp warning, fault/protection-tripped). Charlieplex matrix — wire the four channels as contiguous blocks. No per-LED resistors. Powered from the charge rail (dead in flight). AD strap = 0x74, SDB to enable/GPIO.
 
@@ -141,7 +145,7 @@ These give basic board state even with the ESP off or firmware dead.
   Board 2 required**. Because USB-present ⇒ ESP-on, these are live whenever anything is charging.
 - Colour scheme (mirrors the Board-2 gauge diagnostics): **green breathing = charging · solid blue =
   charged · red = fault/protection · amber = over-temp · off = idle/no cell.**
-- **Power LED VDD from the SYS/charge rail, not the 3V3 LDO** (4× WS2812 ≈ 240 mA at full white;
+- **LED VDD is on `CH1_V`** (the always-live cell rail, *not* the 3V3 LDO) — **note:** ungated, so the SK6812 idle (~2–4 mA total) drains cell 1 during a cells-in storage week; gate the LED rail (or store cells out) if that matters. Original sizing note: (4× WS2812 ≈ 240 mA at full white;
   the AP2112K can't source that). Only the data line touches the ESP — level-shift it (use SK6812
   for 3.3 V tolerance, or a 74AHCT125 / SN74LVC2T45). Dead in flight, like all monitoring.
 
@@ -207,3 +211,4 @@ ESP source select (charge-rail vs cell-1) + always-on capability strap · PD vol
 | 0.2 | Parts selected (MP2617 charger, MAX17048 + TCA9548A mux, CH224K PD sink, DW01A+FS8205 protection, IS31FL3731 gauge, ESP32-S3-WROOM-1, P30B 18650 cell). Corrected terminology: no on-board arming — pull pins are power-enable/isolation. Added fuel-gauge sensing, hardwired indicator LEDs, mechanical stack note (Boards 1+3 stacked, Board 2 spine), candidate BOM. |
 | 0.3 | **Charger/monitoring topology revised to match existing capture:** SY6970 smart charger (charge + integrated I²C monitoring) replaces MP2617 + MAX17048; separate fuel gauge dropped; TCA9548A mux retained (4× shared 0x6B). ESP confirmed ESP32-S3-WROOM-1. BOM rows mapped to concrete KiCad/`BMS` symbol libraries. Added ESP load-switch (TPS22917) + 3V3 LDO (AP2112K) to BOM. Charge current moved from resistor strap to I²C register. Board 1 capture plan written (`board1_power_capture_plan.md`). Added **per-cell addressable RGB status LEDs** (§9b) on Board 1 — ESP-driven, standalone of Board 2. |
 | 0.4 | **Channel output finalized.** Per-channel `CHn_V` is source-selectable by 0Ω — **SYS (default)** or LOAD_P (direct battery); one PTC relocated *after* the selector to fuse either. **Reverse-polarity P-FET moved to the cell terminal** (always-on, now actually guards the charger; Rds drop compensated via I²C VREG); old Q2/Q3 LOAD-branch FETs dropped, keyed holder = primary reverse defense. SY6970 datasheet-verified (VSYSMIN 3.5 V, BATFET 10 mΩ / 9 A OCP, 104 % OVP, supplement mode). Bootstrap cap corrected 47 µF→47 nF, PMID→6.8 µF. Added "no ship-mode in flight" reliability rule. |
+| 0.5 | **Board 1 schematic complete (as-built sync).** ESP gate = diode-OR (`MMBD4448HCQW`) of {USB-divider, `CH1_V` always-on strap, `WAKE`, self-hold} → AP2112K `EN`, 100 k pull-down, `2N7002` off-header shunt (RBF: jumper in = off, out = on) — *replaces the TPS22917 load-switch plan*. `CH_LIVE` repurposed to **`WAKE`** on the J1s signal connector (channel-live now derived in firmware via SY6970 I²C / BLE). Board-2 gauge powered from `CH1_V` via the 8-pin power connector (no 3V3 pass-through). All footprints assigned (R/C 0603). Pyro OC-trip verified safe (DW01A ~10 ms delay ≫ <5 ms firing pulse). |

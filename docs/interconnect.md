@@ -75,25 +75,25 @@ the selector. Live whenever a charged cell is fitted (independent of USB). See a
 
 ## J1s — Board 1 ↔ Board 2  (signal, 4-pin)
 
-I²C to the Board-2 gauge driver, plus the channel-live sense line.
+I²C to the Board-2 gauge driver, plus the gauge-button **wake** line.
 
 | Pin | Net | Notes |
 |---|---|---|
 | 1 | SDA | I²C, pulled up 4.7 k on **Board 1** |
 | 2 | SCL | I²C, pulled up 4.7 k on **Board 1** |
-| 3 | CH_LIVE | channel-live sense (see decision below) |
-| 4 | SGND | signal ground reference for I²C + sense |
+| 3 | **WAKE** | Board-2 gauge button → Board-1 ESP enable (momentary; the button connects `CH1_V` → `WAKE`, which feeds the ESP-enable diode-OR) |
+| 4 | SGND | signal ground reference |
+
+**Board-2 power:** the gauge (IS31FL3731 + LED matrix) is powered **directly from `CH1_V`** via the 8-pin power connector (J1) — no 3V3 pass-through, no Board-2 regulator. The 3.3 V I²C bus is level-compatible across the cell range; the gauge is dark in flight (ESP off → no I²C frames).
 
 **I²C topology:** ESP → TCA9548A → 4× **SY6970** chargers (each addr 0x6B, integrated V/I/charge/TS
 monitoring — no separate fuel gauge), all on Board 1. The IS31FL3731 gauge driver on Board 2
 (addr **0x74**, no conflict) sits **upstream of the mux** and is reached across J1s. Only SDA/SCL
 cross the boundary; the mux and chargers stay on Board 1. Pull-ups (4.7 k) live on Board 1.
 
-> **OPEN — channel-live sense granularity (§13.2).** This contract currently carries **one**
-> combined `CH_LIVE` line (keeps J1s at 4 pins). If the gauge/BLE must show *per-channel* live
-> state, this becomes 4 lines (`CH1_LIVE…CH4_LIVE`) and J1s grows to a 7–8-pin connector, **or**
-> the sense is read locally on Board 2. Decide before laying out either board edge. If it grows,
-> update this table and bump the connector pin count on both sides in the same commit.
+> **RESOLVED (§13.2).** The dedicated channel-live line was **dropped** — pin 3 now carries `WAKE`.
+> Channel-live state is derived in firmware from the SY6970 I²C readings and streamed over BLE /
+> shown on the gauge, so no hardware sense line is needed. J1s stays 4-pin.
 
 ---
 
@@ -150,7 +150,7 @@ on Board 1, §8).
 - `CH{1..4}_V_SW`   — same rail after the Board-2 pull-pin switch → J2/J3
 - `CH{1..4}_GND`    — that channel's independent return (star-bonded at one point only)
 - `SDA` / `SCL`     — I²C bus (4.7 k pull-ups on Board 1)
-- `CH_LIVE`         — combined channel-live sense (or `CH{1..4}_LIVE` if §13.2 goes per-channel)
+- `WAKE`            — Board-2 gauge button → Board-1 ESP enable (momentary; replaced `CH_LIVE`)
 - `SGND`            — signal/I²C reference
 
 Star-point: bond the four `CH*_GND` returns at exactly **one** location (likely Board 1 by the
@@ -161,7 +161,7 @@ cells, §13.3) via per-channel ground-to-star 0 Ω links (§12). Nowhere else.
 ## Open items affecting this contract
 
 1. **§13.1** Mezzanine connector part + pitch → fixes physical pin assignment of J1/J1s/J2.
-2. **§13.2** Channel-live sense granularity (combined 1-line vs per-channel 4-line) → J1s pin count.
+2. ~~**§13.2** Channel-live sense granularity~~ **RESOLVED** — line dropped; pin 3 = `WAKE`, channel-live derived in firmware.
 3. **§13.3** Star-point location → which board carries the ground-to-star 0 Ω links.
 
 When any of these closes, edit this file **first**, in its own commit, then update both board edges.
