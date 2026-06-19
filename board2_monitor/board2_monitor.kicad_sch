@@ -6694,7 +6694,7 @@
 		(uuid "0a9edc5a-4875-43ea-84de-7cd40298365a")
 	)
 	(label "CA2"
-		(at 111.125 60.96 0)
+		(at 111.125 111.76 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6754,7 +6754,7 @@
 		(uuid "2f0c0b6d-f0dd-4c01-bb28-7a4565ab8d03")
 	)
 	(label "CH2_V"
-		(at 31.115 146.685 0)
+		(at 31.115 149.225 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6763,7 +6763,7 @@
 		)
 		(uuid "409a40d7-7a5e-4494-9d36-db8d0b6501bf")
 	)
-	(label "CH1_VIN"
+	(label "CH1_V"
 		(at 241.3 147.955 180)
 		(effects
 			(font
@@ -6794,7 +6794,7 @@
 		(uuid "5534cac5-d85f-426c-9871-e8994b659eae")
 	)
 	(label "CA7"
-		(at 111.125 99.06 0)
+		(at 111.125 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6804,7 +6804,7 @@
 		(uuid "63d8dc56-1f2f-411e-9284-7cdfdcdde2e9")
 	)
 	(label "CH3_V"
-		(at 31.115 149.225 0)
+		(at 31.115 146.685 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6834,7 +6834,7 @@
 		(uuid "7bfb02ed-d20f-4f7f-b2e0-140fa55d82e3")
 	)
 	(label "CH1_VOUT"
-		(at 76.835 144.145 0)
+		(at 76.835 151.765 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6884,7 +6884,7 @@
 		(uuid "9bd54180-c7f0-41ab-a84c-d52926f97f97")
 	)
 	(label "CA9"
-		(at 111.125 119.38 0)
+		(at 111.125 53.34 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6894,7 +6894,7 @@
 		(uuid "9d6835f6-ddb1-49b4-b07f-906d6bbc932c")
 	)
 	(label "CH4_V"
-		(at 31.115 151.765 0)
+		(at 31.115 144.145 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6904,7 +6904,7 @@
 		(uuid "af7a23a3-53b7-4ced-acdb-ddc16da80688")
 	)
 	(label "CH1_V"
-		(at 31.115 144.145 0)
+		(at 31.115 151.765 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6924,7 +6924,7 @@
 		(uuid "b80796b2-b974-4107-a6dd-cd2a89eda9f5")
 	)
 	(label "CH2_VOUT"
-		(at 76.835 146.685 0)
+		(at 76.835 149.225 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6934,7 +6934,7 @@
 		(uuid "bd0c0ed7-f574-4688-9450-70408d519a9f")
 	)
 	(label "CA8"
-		(at 111.125 111.76 0)
+		(at 111.125 60.96 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6944,7 +6944,7 @@
 		(uuid "bfca10af-fb04-4a26-a2e1-f260462ed9b5")
 	)
 	(label "CA1"
-		(at 111.125 53.34 0)
+		(at 111.125 119.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6984,7 +6984,7 @@
 		(uuid "c8ecfa88-cf0d-4b94-b0c8-f97de13ba95c")
 	)
 	(label "CH4_VOUT"
-		(at 76.835 151.765 0)
+		(at 76.835 144.145 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7004,7 +7004,7 @@
 		(uuid "cb0130c9-5a54-4bd7-b96b-367e5d8cad4f")
 	)
 	(label "CH3_VOUT"
-		(at 76.835 149.225 0)
+		(at 76.835 146.685 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7024,7 +7024,7 @@
 		(uuid "cefa960b-91b8-45e0-80cd-addf231b8ac9")
 	)
 	(label "CA6"
-		(at 111.125 91.44 0)
+		(at 111.125 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7063,7 +7063,7 @@
 		)
 		(uuid "e264a3dc-05d9-436f-b157-70ceaf60a222")
 	)
-	(label "CH1_VIN"
+	(label "CH1_V"
 		(at 173.99 139.065 0)
 		(effects
 			(font
@@ -7074,7 +7074,7 @@
 		(uuid "eb50c89e-1eff-4ae1-812c-ffead11cb233")
 	)
 	(label "CA3"
-		(at 111.125 68.58 0)
+		(at 111.125 99.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7084,7 +7084,7 @@
 		(uuid "f5f735bf-5094-41f1-a6bf-61d852ed0aa1")
 	)
 	(label "CA4"
-		(at 111.125 76.2 0)
+		(at 111.125 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7092,6 +7092,25 @@
 			(justify left bottom)
 		)
 		(uuid "fb9d1660-d1cb-4040-bd75-b63e835eced3")
+	)
+	(rule_area
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(polyline
+			(pts
+				(xy 146.685 37.465) (xy 146.685 114.935) (xy 120.65 114.935) (xy 120.65 37.465)
+			)
+			(stroke
+				(width 0)
+				(type dash)
+			)
+			(fill
+				(type none)
+			)
+			(uuid "b9028484-abca-439d-b575-b268aa9351f4")
+		)
 	)
 	(symbol
 		(lib_id "PCM_SparkFun-LED:LED")
@@ -7195,7 +7214,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "040bf998-259a-4a1e-958e-0fd15addd376")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR01"
 			(at 30.48 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -7256,7 +7275,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR013")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -7293,7 +7312,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 43.18 79.502 90)
 			(hide yes)
 			(show_name no)
@@ -7353,7 +7372,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "06174c6b-53cb-477a-b859-0ae596af60d2")
-		(property "Reference" "#PWR02"
+		(property "Reference" "#PWR07"
 			(at 63.5 146.685 0)
 			(hide yes)
 			(show_name no)
@@ -7414,7 +7433,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR02")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -7522,7 +7541,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "07c1ba76-2785-40ee-af58-2a8a1199c505")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR05"
 			(at 43.18 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -7583,7 +7602,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR011")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -7781,7 +7800,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0c7fc206-fc9b-4a1c-b869-8709226184a2")
-		(property "Reference" "C2"
+		(property "Reference" "C3"
 			(at 54.61 42.5449 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7845,7 +7864,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "C2")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -7953,7 +7972,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0da91363-55f1-4f65-a05f-f6c99c8bc94b")
-		(property "Reference" "C3"
+		(property "Reference" "C2"
 			(at 41.91 42.5449 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8017,7 +8036,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "C3")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -8125,7 +8144,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1985c024-2d28-45a7-b0a5-653748c89f21")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR08"
 			(at 63.5 149.225 0)
 			(hide yes)
 			(show_name no)
@@ -8186,7 +8205,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR03")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -8383,7 +8402,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1dcd1a68-0185-4084-a7e2-0f2f3b030f9e")
-		(property "Reference" "J1"
+		(property "Reference" "J4"
 			(at 192.405 146.6849 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8465,7 +8484,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "J1")
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -8573,7 +8592,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1efd5995-5738-406c-b238-f2466dbd0b54")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR011"
 			(at 109.22 144.145 0)
 			(hide yes)
 			(show_name no)
@@ -8634,7 +8653,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR06")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -8742,7 +8761,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "280ea492-6ae6-4029-b1d0-0bf348dfdb23")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR09"
 			(at 63.5 151.765 0)
 			(hide yes)
 			(show_name no)
@@ -8803,7 +8822,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR04")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -9110,7 +9129,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 43.18 64.262 90)
 			(hide yes)
 			(show_name no)
@@ -10250,7 +10269,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5ac4a420-a73d-4ad0-b523-68cd794a863f")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR06"
 			(at 63.5 144.145 0)
 			(hide yes)
 			(show_name no)
@@ -10311,7 +10330,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR01")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -10779,7 +10798,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6b3d98c7-b0fb-476a-826c-711a3b3b16e1")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR013"
 			(at 109.22 149.225 0)
 			(hide yes)
 			(show_name no)
@@ -10840,7 +10859,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR08")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -10857,7 +10876,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "6b47671d-8d8f-4f62-8c8c-767f8a5f8c21")
-		(property "Reference" "J4"
+		(property "Reference" "J2"
 			(at 93.345 137.795 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10937,7 +10956,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "J4")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -10955,7 +10974,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6d81ddce-aff1-480f-8082-0e4f34a9ddbf")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR015"
 			(at 130.175 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -11016,7 +11035,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR05")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -11034,7 +11053,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6f36ea09-0655-4893-adc0-313845a1bd98")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR04"
 			(at 48.26 29.845 0)
 			(hide yes)
 			(show_name no)
@@ -11094,7 +11113,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR015")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -12002,7 +12021,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8edc2606-2018-46ad-a9ba-ce041a06991c")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR014"
 			(at 109.22 151.765 0)
 			(hide yes)
 			(show_name no)
@@ -12063,7 +12082,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR09")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -12769,7 +12788,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a7f653d9-f528-4084-8136-851a6bb596fa")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR03"
 			(at 30.48 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -12830,7 +12849,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR012")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -13118,7 +13137,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b73c69fc-ef07-4ccc-aa58-9eaee6abe62a")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR012"
 			(at 109.22 146.685 0)
 			(hide yes)
 			(show_name no)
@@ -13179,7 +13198,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR07")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -13306,7 +13325,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 39.37 77.1652 0)
 			(hide yes)
 			(show_name no)
@@ -13906,7 +13925,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cb8833d6-f36a-442a-a8a0-ca7fa7e87475")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR02"
 			(at 30.48 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -13967,7 +13986,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "#PWR014")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -15335,7 +15354,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f7fc177a-4fa6-4d46-9877-801c37e8d37f")
-		(property "Reference" "J2"
+		(property "Reference" "J3"
 			(at 144.78 144.7799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15405,7 +15424,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "J2")
+					(reference "J3")
 					(unit 1)
 				)
 			)
@@ -15423,7 +15442,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa81a386-b38f-405b-b7e3-c4121a52c113")
-		(property "Reference" "J3"
+		(property "Reference" "J1"
 			(at 47.625 137.795 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15503,7 +15522,7 @@
 		(instances
 			(project "board2_monitor"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
-					(reference "J3")
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -15777,6 +15796,20 @@
 					(unit 1)
 				)
 			)
+		)
+	)
+	(group ""
+		(uuid "9a1d6458-d0b7-408f-84c4-548cca9725d0")
+		(members "024d17b1-126e-4630-acb8-9e3124bb105b" "13ce72be-8471-41b1-90ac-7cad2a7f6772"
+			"19edd71f-0d75-4565-8ce6-29b74b022ca7" "1edb52f9-e41e-4d8b-8005-b9bbc50f976d"
+			"27642fc3-b222-4ae0-b03c-78928e4c55ff" "2933783a-d457-4f48-ab48-162180164315"
+			"37437ef5-3f27-4d26-bde6-7564dd5b51ba" "3caf3d99-f337-4120-b809-945f507b86c7"
+			"623be199-adda-4087-b77a-3e966c172eee" "a2779ec4-9ecf-4485-ba64-a987e2ab313f"
+			"aebc1b33-c8ca-468e-b471-2ae67f13f393" "b9028484-abca-439d-b575-b268aa9351f4"
+			"c6da93df-865e-45ac-b250-bafecd0cdce7" "c7937c40-c334-4c2c-9e34-47739af39191"
+			"c9ff51cf-ed88-40a8-9dde-69fad38569d9" "d251f6b1-7fc4-4603-bc10-fe6e0ed60ef3"
+			"da2c96a9-8370-47e5-87f7-d52213ce98a9" "f6ecbc79-67a0-419e-a3cd-553228bd66eb"
+			"fe7e9fe6-e89f-499c-af16-0a5a52864a59"
 		)
 	)
 	(sheet_instances
