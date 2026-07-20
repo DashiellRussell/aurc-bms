@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "BMS")(type "KiCad")(uri "${KIPRJMOD}/../libs/BMS.pretty")(options "")(descr "AURC BMS shared footprint library (single source of truth)"))
+  (lib (name "UNSW_ROCKETRY_LIBRARY")(type "KiCad")(uri "${KIPRJMOD}/../libs/UNSW_ROCKETRY_LIBRARY.pretty")(options "")(descr "UNSW Rocketry shared symbols + logos"))
+)
