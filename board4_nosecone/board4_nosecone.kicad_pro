@@ -50,7 +50,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.2
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -195,6 +195,13 @@
       ],
       "track_widths": [
         0.0,
+        0.2,
+        0.3,
+        0.5,
+        0.6,
+        0.75,
+        1.0,
+        1.5,
         2.0
       ],
       "tuning_pattern_settings": {
@@ -641,14 +648,32 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "board3_dist.kicad_sch",
-        "name": "board3_dist",
+        "filename": "board4_nosecone.kicad_sch",
+        "name": "board4_nosecone",
         "uuid": "0d1390b9-e848-4ad4-8bef-84851d0f73a3"
       }
     ],
-    "used_designators": "",
+    "used_designators": "L1-2,C1-21,C38,U1-8,SW1-4,TH1-2,F1-2,BT1,R1-44,R56-61,JP1,Q1-5,Q9,#PWR1-68,#PWR101-105,D1-7,D12,J1-5,#FLG1-4",
     "variants": []
   },
+  "sheets": [
+    [
+      "0d1390b9-e848-4ad4-8bef-84851d0f73a3",
+      "board4_nosecone"
+    ],
+    [
+      "314b0618-257d-47e6-bb08-93d9975a122d",
+      "charge_chanel_1"
+    ],
+    [
+      "273010bd-275d-4600-97dd-65e7d08576b9",
+      "USB_IN"
+    ],
+    [
+      "1fa25f59-cb32-405c-8725-093e4a56f4e5",
+      "charge_chanel_2"
+    ]
+  ],
   "text_variables": {},
   "tuning_profiles": {
     "meta": {

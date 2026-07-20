@@ -47,8 +47,12 @@ via sheet pins, exactly like board1.
 
 ## 3. Per-sheet work
 
-**`USB_IN` (copied):** only change — **CFG strap default 9 V** (keep 12 V position DNP for sharing
-the main brick). Everything else (USBLC6, bulk cap, input LED) stays.
+**`USB_IN` (copied):** only change — **CH224K strapped to 9 V**. Per datasheet, 9 V = CFG1 = CFG2 =
+CFG3 all LOW (GND). As copied from board1: CFG1 already has a 24 K to GND (= logic 0, good), but
+**CFG2 and CFG3 are floating** — add a **0 Ω (`R_0603_1608Metric`) from each of CFG2 and CFG3 to
+GND**. No 12 V DNP position kept: CFG2/CFG3 cap at 3.7 V so a clean 12 V strap (CFG3 = 1) needs a
+≤3.7 V pull-up rail — treat 12 V as a rework if ever needed. Everything else (USBLC6, bulk cap,
+input LED) stays.
 
 **`charge_chanel` ×2 (copied):** use as-is. The copied sheet already carries SY6970 + DW01A +
 SI4920DY + AO3401A + SRP5030 + PTC + NTC + /STAT + SK6812 with the right cap set (47 nF bootstrap,
