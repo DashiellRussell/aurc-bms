@@ -5027,6 +5027,16 @@
 	)
 	(wire
 		(pts
+			(xy 83.82 133.35) (xy 100.33 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b4fcbe2-bdc6-4611-ac99-c19c3cbf6e18")
+	)
+	(wire
+		(pts
 			(xy 25.4 91.44) (xy 34.29 91.44)
 		)
 		(stroke
@@ -5064,16 +5074,6 @@
 			(type default)
 		)
 		(uuid "22a1d14c-ee76-4b55-9f1a-0cbf5d8ba21d")
-	)
-	(wire
-		(pts
-			(xy 95.25 133.35) (xy 110.49 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2399042e-b7f0-4e20-a6a0-f0ea172c2ece")
 	)
 	(wire
 		(pts
@@ -6217,6 +6217,16 @@
 	)
 	(wire
 		(pts
+			(xy 107.95 133.35) (xy 110.49 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e44263f6-5bbb-4cc9-974e-bccf184c145b")
+	)
+	(wire
+		(pts
 			(xy 30.48 123.19) (xy 34.29 123.19)
 		)
 		(stroke
@@ -6976,7 +6986,7 @@
 		(uuid "e0b83713-86d4-40cb-bca8-d1f4957c456a")
 	)
 	(label "Heartbeat LED"
-		(at 95.25 133.35 0)
+		(at 83.82 133.35 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11582,6 +11592,87 @@
 			(project "board1_power"
 				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
 					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 104.14 133.35 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c94091f2-2d2c-4786-a3a0-54afbf5478e4")
+		(property "Reference" "R8"
+			(at 101.6 128.905 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "330R"
+			(at 101.6 130.81 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 104.14 131.572 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 104.14 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 104.14 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "7346d571-6916-4a23-9771-f69f4adefe2e")
+		)
+		(pin "1"
+			(uuid "37eab6c3-9ecb-4d04-9e5d-da73b5a4f562")
+		)
+		(instances
+			(project "board1_power"
+				(path "/0d1390b9-e848-4ad4-8bef-84851d0f73a3"
+					(reference "R8")
 					(unit 1)
 				)
 			)
